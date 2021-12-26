@@ -20,6 +20,12 @@ do
     fi
 done
 
+# Clean
+if [ $clean -gt 0 ]
+then
+    make clean
+fi
+
 # Build the program in debug or release mode and copy the binary file to the proper folder
 if [ $build -gt 0 ]
 then
@@ -33,11 +39,6 @@ then
         mkdir -p ./bin/release
         cp ./build/opengl_engine ./bin/release
     fi
-fi
-
-if [ $clean -gt 0 ]
-then
-    make clean
 fi
 
 if [ $run -gt 0 ]

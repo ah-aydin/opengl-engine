@@ -9,7 +9,7 @@
     #define WINDOW_SIZE DM.w, DM.h
 #else
     #define WINDOW_FLAGS SDL_WINDOW_OPENGL
-    #define WINDOW_SIZE 800, 600
+    #define WINDOW_SIZE 1280, 720
 #endif
 
 namespace oe

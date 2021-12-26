@@ -18,6 +18,8 @@ namespace oe
         bool sdlInit();
         bool glInit();
         void inputInit();
+        // Terminate
+        void quit();
 
         // Main loop
         void mainLoop();
