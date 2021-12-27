@@ -1,6 +1,9 @@
 #pragma once
 
 #include <GL/glew.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include <map>
 #include <vector>
@@ -15,8 +18,12 @@ namespace oe
         void bind() { glUseProgram(id); };
         void unbind() { glUseProgram(0); };
 
-        void setUniform3f(const char* uniformName, float v0, float v1, float v2);
-        void setUniform4f(const char* uniformName, float v0, float v1, float v2, float v3);
+
+        void setInt(const char* uniformName, int v0);
+        void setFloat(const char* uniformName, GLfloat v0);
+        void setVector3f(const char* uniformName, float v0, float v1, float v2);
+        void setVector4f(const char* uniformName, float v0, float v1, float v2, float v3);
+        void setMatrix4f(const char* uniformName, glm::mat4 mat);
     private:
         GLuint id;
         std::map<const char*, int> uniforms;

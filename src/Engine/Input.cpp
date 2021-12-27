@@ -79,9 +79,13 @@ namespace oe
         try
         {
             auto ax = Input::axes.at(axis);
-            float pInput = (float)Input::getKeyPress(ax.positiveKey);
-            float bInput = (float)Input::getKeyPress(ax.negativeKey);
-            return pInput - bInput;
+            bool pInput = Input::getKeyPress(ax.positiveKey);
+            bool bInput = Input::getKeyPress(ax.negativeKey);
+
+            if (pInput && bInput)   return 0.0f;
+            else if (pInput)        return 1.0f;
+            else if (bInput)        return -1.0f;
+            else                    return 0.0f;
         }
         catch(const std::exception& e)
         {
@@ -92,5 +96,5 @@ namespace oe
     }
 
     Sint32 Input::mouseX() { return Input::mouse.x; }
-    Sint32 Input::mouseY() { return Input::mouse.y; }
+    Sint32 Input::mouseY() { return -Input::mouse.y; }
 }

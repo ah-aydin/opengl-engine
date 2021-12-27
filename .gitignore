@@ -1,2 +1,4 @@
-bin/
+opengl_engine
+gl.log
 build/
+.vscode/

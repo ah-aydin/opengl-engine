@@ -64,7 +64,6 @@ namespace oe
         }
         
         shaderIds.push_back(shaderId);
-        gl_log(cSource);
         return true;
     }
 
@@ -102,7 +101,30 @@ namespace oe
         }
     }
 
-    void Shader::setUniform3f(const char* uniformName, float v0, float v1, float v2)
+    void Shader::setInt(const char* uniformName, int v0)
+    {
+        GLint location = getUniformLocation(uniformName);
+        
+        if (location == -1) return;
+        bind();
+        glUniform1i(location, v0);
+        unbind();
+    }
+
+    void Shader::setFloat(const char* uniformName, GLfloat v0)
+    {
+        GLint location = getUniformLocation(uniformName);
+        
+        if (location == -1) return;
+        bind();
+        glUniform1f(location, v0);
+        // float ree;
+        // glGetUniformfv(id, location, &ree);
+        // printf("Factor of %f becomes %f\n", v0, ree);
+        unbind();
+    }
+    
+    void Shader::setVector3f(const char* uniformName, float v0, float v1, float v2)
     {
         GLint location = getUniformLocation(uniformName);
         
@@ -112,7 +134,7 @@ namespace oe
         unbind();
     }
 
-    void Shader::setUniform4f(const char* uniformName, float v0, float v1, float v2, float v3)
+    void Shader::setVector4f(const char* uniformName, float v0, float v1, float v2, float v3)
     {
         GLint location = getUniformLocation(uniformName);
         
@@ -120,5 +142,14 @@ namespace oe
         bind();
         glUniform4f(location, v0, v1, v2, v3);
         unbind();
+    }
+
+    void Shader::setMatrix4f(const char* uniformName, glm::mat4 mat)
+    {
+        GLint location = getUniformLocation(uniformName);
+
+        if (location == -1) return;
+        bind();
+        glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(mat));
     }
 }
