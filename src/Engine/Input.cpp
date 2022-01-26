@@ -15,6 +15,7 @@ namespace oe
 
     int Input::convertKeycode(SDL_Keycode code)
     {
+        // get location on 'keys' array
         if (code >= SDLK_CAPSLOCK)
             return code - padding;
         else
@@ -96,5 +97,5 @@ namespace oe
     }
 
     Sint32 Input::mouseX() { return Input::mouse.x; }
-    Sint32 Input::mouseY() { return -Input::mouse.y; }
+    Sint32 Input::mouseY() { return -Input::mouse.y; } // return negative, since SDL events measure up mouse movement as negative
 }

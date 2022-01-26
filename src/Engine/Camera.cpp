@@ -40,9 +40,9 @@ namespace oe
     void Camera::handleInput(float iForward, float iRight, float iUp, float iDown, float mouseX, float mouseY)
     {
         float verticalMove = iUp - iDown;
-        position += iForward * moveSpeed * forward * Time::getDeltaTime() + 
-                    iRight * moveSpeed * right * Time::getDeltaTime() + 
-                    verticalMove * moveSpeed * worldUp * Time::getDeltaTime();
+        position += iForward * moveSpeed * forward * Time::getDeltaTime() +     // forward
+                    iRight * moveSpeed * right * Time::getDeltaTime() +         // right
+                    verticalMove * moveSpeed * worldUp * Time::getDeltaTime();  // vertical
         yaw += mouseX * sensitivity;
         pitch += mouseY * sensitivity;
         // Clamp vertical look
@@ -70,10 +70,7 @@ namespace oe
             glm::cross(right, forward)
         );
         target = forward + position;
-    }
 
-    glm::mat4 Camera::getViewMatrix()
-    {
-        return glm::lookAt(position, target, worldUp);
+        viewMatrix = glm::lookAt(position, target, worldUp);
     }
 }

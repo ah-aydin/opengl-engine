@@ -34,17 +34,19 @@ namespace oe
         static std::map<std::string, InputAxis> axes;
 
     public:
+        // Event handlers
         static void keyDown(SDL_Keycode code);
         static void keyUp(SDL_Keycode code);
         static void mouseMotion(Sint32 x, Sint32 y);
         static void resetMouse();
 
+        // Input creation
         static void createAction(const std::string& name, SDL_Keycode keyCode);
         static void createAxis(const std::string& name, SDL_Keycode positiveKey, SDL_Keycode negativeKey);
 
+        // Input access
         static bool getAction(const std::string& action);
         static float getAxis(const std::string& axis);
-
         static Sint32 mouseX();
         static Sint32 mouseY();
     };
