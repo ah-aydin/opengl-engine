@@ -4,6 +4,8 @@
 #include <map>
 #include <string>
 
+#define KEY_ARRAY_SIZE 501
+
 namespace oe
 {
     struct Mouse
@@ -25,7 +27,7 @@ namespace oe
     class Input
     {
     private:
-        static bool keys[500];
+        static bool keys[KEY_ARRAY_SIZE];
         static int convertKeycode(SDL_Keycode);
         static bool getKeyPress(SDL_Keycode);
 

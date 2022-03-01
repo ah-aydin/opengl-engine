@@ -86,15 +86,15 @@ vec3 computePointLight(PointLight light, vec3 normal, vec3 viewDir)
 void main()
 {
     // define output color vector
-    vec3 output = vec3(0.0);
+    vec3 outColor = vec3(0.0);
     vec3 viewDir = normalize(viewPos - FragPos);
     // add the directional light
-    output += computeDirectionalLight(directionalLight, Normal, viewDir);
+    outColor += computeDirectionalLight(directionalLight, Normal, viewDir);
     for (int i = 0; i < POINT_LIGHT_COUNT; ++i)
     {
-        output += computePointLight(pointLights[i], Normal, viewDir);
+        outColor += computePointLight(pointLights[i], Normal, viewDir);
     }
     // spotlights
-    //output += computeSpotLight();
-    FragColor = vec4(output, 1.0);
+    //outColor += computeSpotLight();
+    FragColor = vec4(outColor, 1.0);
 }

@@ -1,13 +1,14 @@
 #include "Input.hpp"
 
 #include <iostream>
+#include <math.h>
 
 #include "../Logging/Log.hpp"
 
 namespace oe
 {
     Mouse Input::mouse = {0, 0};
-    bool Input::keys[500] = {0};
+    bool Input::keys[KEY_ARRAY_SIZE] = {0};
     std::map<std::string, InputAction> Input::actions;
     std::map<std::string, InputAxis> Input::axes;
 
@@ -17,9 +18,9 @@ namespace oe
     {
         // get location on 'keys' array
         if (code >= SDLK_CAPSLOCK)
-            return code - padding;
+            return std::min(code - padding, 500);
         else
-            return code;
+            return std::min(code, 500);
     }
 
     bool Input::getKeyPress(SDL_Keycode code)

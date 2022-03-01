@@ -131,7 +131,7 @@ namespace oe
 
             if (Input::getAction("quit"))
                 break;
-
+            
             level->update(Time::getDeltaTime());
 
             window.swapWindow();
