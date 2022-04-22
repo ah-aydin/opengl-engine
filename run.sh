@@ -1,16 +1,18 @@
+# Variables to keep track of the arguments
 debug=0
 build=0
 run=0
 clean=0
+
 # Read arguments
-for arg in "$@" 
+for arg in "$@"
 do
-    if [ "$arg" = "d" ]
-    then
-        debug=1
-    elif [ "$arg" = "b" ]
+    if [ "$arg" = "b" ]
     then
         build=1
+    elif [ "$arg" = "d" ] 
+    then
+        debug=1
     elif [ "$arg" = "r" ]
     then
         run=1
@@ -20,37 +22,37 @@ do
     fi
 done
 
+# Set the build and bin directories
+if [ $debug -gt 0 ] # Debug
+then
+    build_dir=./build/debug
+    bin_dir=./bin/debug
+    make_mode=debug
+else # Release
+    build_dir=./build/release
+    bin_dir=./bin/release
+    make_mode=release
+fi
+
 # Clean
 if [ $clean -gt 0 ]
 then
-    make clean
+    make clean BUILD_DIR=$build_dir
 fi
 
-# Build the program in debug or release mode and copy the binary file to the proper folder
+# Build the program
 if [ $build -gt 0 ]
 then
-    if [ $debug -gt 0 ]
-    then
-        make debug
-        mkdir -p ./bin/debug
-        cp ./build/opengl_engine ./bin/debug
-    else
-        make
-        mkdir -p ./bin/release
-        cp ./build/opengl_engine ./bin/release
-    fi
+    make $make_mode BUILD_DIR=$build_dir
+    mkdir -p $build_dir
+    cp $build_dir/opengl_engine $bin_dir
 fi
 
+# Run the program
 if [ $run -gt 0 ]
 then
-    if [ $debug -gt 0 ]
-    then
-        cd ./bin/debug
-        ./opengl_engine
-        cd ../../
-    else
-        cd ./bin/release
-        ./opengl_engine
-        cd ../../
-    fi
+    cd $bin_dir
+    ./opengl_engine
+    cd ../../
 fi
+

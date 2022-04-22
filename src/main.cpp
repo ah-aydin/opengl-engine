@@ -3,6 +3,6 @@
 int main(int argc, char *argv[])
 {
     // Create and run application
-    oe::Application app{};
+    Application app{};
     return app.run();
 }

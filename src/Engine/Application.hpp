@@ -4,32 +4,29 @@
 
 #include "Window.hpp"
 
-namespace oe
+class Application
 {
-    class Application
-    {
-    public:
-        Application() {};
-        ~Application();
+public:
+    Application() {};
+    ~Application();
 
-    private:
-        // Initialization
-        bool init();
-        bool sdlInit();
-        bool glInit();
-        void inputInit();
-        // Terminate
-        void quit();
+private:
+    // Initialization
+    bool init();
+    bool sdlInit();
+    bool glInit();
+    void inputInit();
+    // Terminate
+    void quit();
 
-        // Main loop
-        void mainLoop();
-        void PollEvents();
-        bool running = true;
-        SDL_Event event;
+    // Main loop
+    void mainLoop();
+    void PollEvents();
+    bool running = true;
+    SDL_Event event;
 
-    public:
-        int run();
-        
-        Window window;
-    };
-}
+public:
+    int run();
+    
+    Window window;
+};
