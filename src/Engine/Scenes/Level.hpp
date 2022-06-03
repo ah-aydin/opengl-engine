@@ -4,8 +4,8 @@
 
 #include <GL/glew.h>
 
-#include "../Shader.hpp"
-#include "../Texture.hpp"
+#include "../Rendering/Shader.hpp"
+#include "../Rendering/Texture.hpp"
 
 class Level : public Scene
 {
@@ -14,6 +14,9 @@ public:
     void init() override;
     void update(float dt) override;
     ~Level();
+
+protected:
+    void handleInput() override;
 
 private:
     void initBuffers();

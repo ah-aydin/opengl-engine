@@ -8,6 +8,7 @@
 #include "../Logging/Log.hpp"
 
 #include "Scenes/Level.hpp"
+#include "Scenes/ModelLoading.hpp"
 
 Application::~Application()
 {
@@ -117,7 +118,7 @@ void Application::inputInit()
 
 void Application::mainLoop()
 {
-    Level* level = new Level();
+    ModelLoading* level = new ModelLoading();
     level->init();
 
     while (running)

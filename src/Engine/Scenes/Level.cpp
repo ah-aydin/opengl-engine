@@ -127,15 +127,8 @@ void Level::initShaders()
 
 void Level::update(float dt)
 {
-    // Handle camera input
-    float forward = Input::getAxis("forward");
-    float right = Input::getAxis("right");
-    float up = Input::getAction("jump") ? 1 : 0;
-    float down = Input::getAction("crouch") ? 1 : 0;
-    float mouseX = (float)Input::mouseX();
-    float mouseY = (float)Input::mouseY();
-
-    camera->handleInput(forward, right, up, down, mouseX, mouseY);
+    // Call the parent update
+    Scene::update(dt);
 
     // Render cube
     glBindVertexArray(cubeVAO);
@@ -170,4 +163,17 @@ void Level::update(float dt)
         lightCubeShader->setMatrix4f("model", model);
         glDrawArrays(GL_TRIANGLES, 0, 36);
     }
+}
+
+void Level::handleInput()
+{
+    // Handle camera input
+    float forward = Input::getAxis("forward");
+    float right = Input::getAxis("right");
+    float up = Input::getAction("jump") ? 1 : 0;
+    float down = Input::getAction("crouch") ? 1 : 0;
+    float mouseX = (float)Input::mouseX();
+    float mouseY = (float)Input::mouseY();
+
+    camera->handleInput(forward, right, up, down, mouseX, mouseY);
 }

@@ -98,7 +98,7 @@ vec3 computePointLight(PointLight light, vec3 normal, vec3 viewDir)
     return ambient + diffuse + specular;
 }
 
-vec3 compputerSpotLight(SpotLight light, vec3 normal, vec3 viewDir)
+vec3 computerSpotLight(SpotLight light, vec3 normal, vec3 viewDir)
 {
     vec3 lightDir = normalize(light.position - FragPos);
 

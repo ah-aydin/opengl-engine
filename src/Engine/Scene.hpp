@@ -23,6 +23,10 @@ public:
      * 
      * @param dt time in miliseconds since last frame
      */
-    virtual void update(float dt) { };
+    virtual void update(float dt) { handleInput(); };
     virtual ~Scene() { };
+
+protected:
+    // Get called with the update method to handle inputs
+    virtual void handleInput() { };
 };
