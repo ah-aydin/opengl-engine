@@ -9,7 +9,7 @@ The code was written on a linux system.
 Required library installations
 
 ```
-sudo apt-get install libsdl2-dev libglew-dev
+sudo apt-get install libsdl2-dev libglew-dev libassimp-dev libglm-dev
 ```
 
 Compiling the program
