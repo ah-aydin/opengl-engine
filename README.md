@@ -1,6 +1,8 @@
 Basic Graphics Engine
 =====================
 
+The project has been discontinued on linux and moved over to windows visual studio C++. Click [here](https://github.com/ah-aydin/opengl-engine-vs) to go to the new repo.
+
 Requirements
 ------------
 
